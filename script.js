@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Contact form handling
     const contactForm = document.getElementById('contact-form');
-    
+    /*
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Open email client
             window.location.href = `mailto:${prijemce}?subject=${subject}&body=${bodyEncoded}`;
         });
-    }
+    }*/
     
     // Smooth scrolling for anchor links (if using same-page navigation)
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {

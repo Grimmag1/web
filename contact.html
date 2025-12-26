@@ -58,8 +58,9 @@
 
         <div class="contact-form-wrapper">
             <h2>Napište nám</h2>
-            <form id="contact-form">
-                <div class="form-group" action="send-email.php" method="POST">
+            <form id="contact-form" name="contact" method="POST" data-netlify="true">
+                <input type="hidden" name="form-name" value="contact">
+                <div class="form-group">
                     <label for="jmeno">Jméno *</label>
                     <input type="text" id="jmeno" name="jmeno" required>
                 </div>

@@ -60,16 +60,29 @@
             </ul>
         </div>
 
-        <div class="service-card">
+        <div class="service-card" data-modal="renovace">
             <h3>Renovace & servis</h3>
             <ul class="service-features">
-                <li><a href="gallery.html">dodatečné opláštění eurooken hliníkem</a></li>
-                <li><a href="gallery.html">výměna a doplnění těsnění (včetně kastlových oken)</a></li>
-                <li><a href="gallery.html">renovace dřevěných oken a dveří</a></li>
+                <li>dodatečné opláštění eurooken hliníkem</li>
+                <li>výměna a doplnění těsnění (včetně kastlových oken)</li>
+                <li>renovace dřevěných oken a dveří</li>
             </ul>
         </div>
     </div>
 </section>
+
+<div class="modal-overlay" id="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 id="modal-title"></h2>
+            <button class="modal-close" id="modal-close">&times;</button>
+        </div>
+        <div class="modal-body">
+            <img id="modal-image" class="modal-image" src="" alt="">
+            <p id="modal-text" class="modal-text"></p>
+        </div>
+    </div>
+</div>
 
 <!-- ===== PROCESS ===== -->
 <section class="process-section">

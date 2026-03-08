@@ -17,7 +17,8 @@ function initMobileMenu() {
 }
 
 function setActiveNav() {
-    const page = window.location.pathname.split('/').pop() || 'index.html';
+    const page = document.body.dataset.page;
+    if (!page) return;
     document.querySelectorAll('.desktop-menu a').forEach(link => {
         if (link.getAttribute('href') === page) {
             link.classList.add('active');

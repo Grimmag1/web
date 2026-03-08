@@ -76,84 +76,61 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Close modal
-    modalClose.addEventListener('click', () => {
-        modal.classList.remove('active');
-        document.body.style.overflow = '';
-    });
-    
-    // Close modal when clicking outside
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
+    if (modal && modalClose) {
+        // Close modal
+        modalClose.addEventListener('click', () => {
             modal.classList.remove('active');
             document.body.style.overflow = '';
-        }
-    });
-    
-    // Close modal with Escape key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal.classList.contains('active')) {
-            modal.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-    });
-    
-    // Contact form handling
-    //const contactForm = document.getElementById('contact-form');
-    /*
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const jmeno = document.getElementById('jmeno').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const telefon = document.getElementById('telefon').value.trim();
-            const zprava = document.getElementById('zprava').value.trim();
-            
-            // Validation
-            if (jmeno === '') {
-                alert('Vyplňte prosím své jméno.');
-                return;
-            }
-            
-            if (email === '') {
-                alert('Vyplňte prosím svůj e-mail.');
-                return;
-            }
-            
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-                alert('Zadejte platný e-mail.');
-                return;
-            }
-
-            if (telefon === '') {
-                alert('Vyplňte prosím svůj telefon.');
-                return;
-            }
-            
-            if (zprava === '') {
-                alert('Vyplňte prosím zprávu.');
-                return;
-            }
-            
-            // Email to send
-            const prijemce = 'dalibor.kalina2002@seznam.cz';
-            const subject = encodeURIComponent('Nová zpráva z webu');
-            
-            let body = 'Jméno: ' + jmeno + '\n';
-            body += 'Email: ' + email + '\n';
-            if (telefon !== '') {
-                body += 'Telefon: ' + telefon + '\n';
-            }
-            body += '\nZpráva:\n' + zprava;
-            
-            const bodyEncoded = encodeURIComponent(body);
-            
-            // Open email client
-            window.location.href = `mailto:${prijemce}?subject=${subject}&body=${bodyEncoded}`;
         });
-    }*/
+
+        // Close modal when clicking outside
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    }
+    
+    // Contact form handling via Formspree
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Odesílání...';
+
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: new FormData(contactForm),
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (response.ok) {
+                    contactForm.innerHTML = '<p class="form-success">Vaše zpráva byla úspěšně odeslána.</p>';
+                } else {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Odeslat zprávu';
+                    alert('Odeslání se nezdařilo. Zkuste to prosím znovu.');
+                }
+            } catch {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Odeslat zprávu';
+                alert('Chyba sítě. Zkuste to prosím znovu.');
+            }
+        });
+    }
     
     // Smooth scrolling for anchor links (if using same-page navigation)
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {

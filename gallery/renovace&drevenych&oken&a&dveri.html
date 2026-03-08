@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MC OKNA & DVEŘE</title>
+    <link rel="icon" type="image/png" href="../images/icon.png">
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header>
+    <nav>
+        <a href="../index.html" class="logo">
+            <img src="../images/icon.png" alt="Logo">
+            <span>OKNA & DVEŘE</span>
+        </a>
+        <ul class="desktop-menu">
+            <li><a href="../index.html">Hlavní stránka</a></li>
+            <li><a href="../services.html">Služby</a></li>
+            <li><a href="../about.html">O nás</a></li>
+            <li><a href="../contact.html">Kontakt</a></li>
+        </ul>
+        <button id="menu-btn" aria-label="Menu">☰</button>
+    </nav>
+    <div id="mobile-menu" class="mobile-menu hidden">
+        <a href="../index.html">Hlavní stránka</a>
+        <a href="../services.html">Služby</a>
+        <a href="../about.html">O nás</a>
+        <a href="../contact.html">Kontakt</a>
+    </div>
+</header>
+
+<!-- ===== PAGE HEADER ===== -->
+<div class="page-header">
+    <h1>Galerie</h1>
+    <h1>Renovace dřevěných oken a dveří</h1>
+</div>
+
+<!-- ===== GALLERY ===== -->
+<section class="content-section">
+    <div class="gallery-item">
+        <img src="../images/renovace1.jpeg" alt="Projekt" data-modal="renovace">
+        <p>Původní stará barva</p>
+    </div>
+    <div class="gallery-item">
+        <img src="../images/renovace2.jpeg" alt="Projekt">
+        <p>Oškrabání původního nátěru</p>
+    </div>
+    <div class="gallery-item">
+        <img src="../images/renovace3.jpeg" alt="Projekt">
+        <p>Vybroušení bruskou</p>
+    </div>
+    <div class="gallery-item">
+        <img src="../images/renovace4.jpeg" alt="Projekt">
+        <p>Nátěr základní barvou a finální lazurou</p>
+    </div>      
+</section>
+
+<div class="modal-overlay" id="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button class="modal-close" id="modal-close">&times;</button>
+        </div>
+        <div class="modal-body">
+            <img id="modal-image" class="modal-image" src="" alt="">
+            <p id="modal-text" class="modal-text"></p>
+        </div>
+    </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h4>Kontaktní údaje</h4>
+            <p>Email: info@seznam.cz</p>
+            <p>Tel: +420 123 456 789</p>
+        </div>
+        <div class="footer-section">
+            <h4>MC OKNA & DVEŘE</h4>
+            <p>Poctivé řešení, na které se můžete spolehnout</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        © 2025 MC OKNA & DVEŘE – Všechna práva vyhrazena
+    </div>
+</footer>
+
+<script src="../script.js"></script>
+
+</body>
+</html>

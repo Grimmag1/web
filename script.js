@@ -46,11 +46,10 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Get elements
     const modal = document.getElementById('modal');
-    const modalTitle = document.getElementById('modal-title');
     const modalText = document.getElementById('modal-text');
     const modalImage = document.getElementById('modal-image');
     const modalClose = document.getElementById('modal-close');
-    const serviceCards = document.querySelectorAll('.service-card');
+    const serviceCards = document.querySelectorAll('.gallery-item img');
     
     // Open modal
     serviceCards.forEach(card => {
@@ -61,7 +60,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const data = modalData[modalType];
             
             if (data) {
-                modalTitle.textContent = data.title;
                 modalImage.src = data.image;
                 modalImage.alt = data.title;
                 
@@ -99,27 +97,6 @@ document.addEventListener('DOMContentLoaded', function() {
             document.body.style.overflow = '';
         }
     });
-
-    // Open modal from URL parameter
-    const urlParams = new URLSearchParams(window.location.search);
-    const modalParam = urlParams.get('modal');
-
-    if (modalParam && modalData[modalParam]) {
-        const data = modalData[modalParam];
-        modalTitle.textContent = data.title;
-        modalImage.src = data.image;
-        modalImage.alt = data.title;
-        
-        // Create list from text array
-        if (Array.isArray(data.text)) {
-            modalText.innerHTML = '<ul>' + data.text.map(item => `<li><a href="gallery.html">${item}</a></li>`).join('') + '</ul>';
-        } else {
-            modalText.textContent = data.text;
-        }
-        
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
     
     // Contact form handling
     //const contactForm = document.getElementById('contact-form');

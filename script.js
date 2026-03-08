@@ -35,7 +35,7 @@ const FOOTER_HTML = `
         </div>
     </div>
     <div class="footer-bottom">
-        © 2025 MC OKNA & DVEŘE – Všechna práva vyhrazena
+        © 2026 MC OKNA & DVEŘE – Všechna práva vyhrazena
     </div>
 </footer>`;
 
@@ -54,6 +54,36 @@ function initMobileMenu() {
 
     mobileMenu.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+    });
+}
+
+function initCarousel() {
+    const wrapper = document.querySelector('.services-carousels');
+    if (!wrapper) return;
+
+    const tracks = wrapper.querySelectorAll('.carousel-track');
+    if (!tracks.length) return;
+
+    const imageGroups = Array.from(tracks).map(t => t.querySelectorAll('img'));
+    const total = imageGroups[0].length;
+    let current = 0;
+
+    imageGroups.forEach(imgs => imgs[0].classList.add('active'));
+
+    function goTo(index) {
+        imageGroups.forEach(imgs => {
+            imgs[current].classList.remove('active');
+            imgs[index].classList.add('active');
+        });
+        current = index;
+    }
+
+    wrapper.querySelector('.carousel-prev').addEventListener('click', () => {
+        goTo((current - 1 + total) % total);
+    });
+
+    wrapper.querySelector('.carousel-next').addEventListener('click', () => {
+        goTo((current + 1) % total);
     });
 }
 
@@ -76,6 +106,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (footerPlaceholder) footerPlaceholder.innerHTML = FOOTER_HTML;
     setActiveNav();
     initMobileMenu();
+    initCarousel();
 
     // Contact form handling via Formspree
     const contactForm = document.getElementById('contact-form');
@@ -107,23 +138,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 alert('Chyba sítě. Zkuste to prosím znovu.');
             }
         });
-    }
-
-    // Gallery population from manifest
-    const galleryGrid = document.getElementById('gallery-grid');
-    if (galleryGrid) {
-        fetch('images/realizace/images.json')
-            .then(res => res.json())
-            .then(files => {
-                files.forEach((filename, i) => {
-                    const item = document.createElement('div');
-                    item.className = 'gallery-item';
-                    item.innerHTML = `
-                        <img src="images/realizace/${filename}" alt="Realizace ${i + 1}">
-                    `;
-                    galleryGrid.appendChild(item);
-                });
-            });
     }
 
     // Smooth scrolling for anchor links

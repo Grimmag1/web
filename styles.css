@@ -357,6 +357,19 @@ section h2 {
     font-size: 16px;
 }
 
+.section-cta {
+    margin-top: 40px;
+}
+
+.section-cta .btn-primary {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 18px;
+    font-size: 1.6rem;
+    box-sizing: border-box;
+}
+
 /* ====== SERVICES ====== */
 .services-grid {
     display: grid;
@@ -694,92 +707,6 @@ footer {
     border-top: 1px solid rgba(255,255,255,0.1);
     color: rgba(255,255,255,0.6);
     font-size: 14px;
-}
-
-/* Modal Styles */
-.modal-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    z-index: 1000;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-}
-
-.modal-overlay.active {
-    display: flex;
-}
-
-.modal-content {
-    background: white;
-    border-radius: 12px;
-    max-width: 600px;
-    width: 100%;
-    max-height: 90vh;
-    overflow-y: auto;
-    position: relative;
-    animation: modalSlideIn 0.3s ease-out;
-}
-
-@keyframes modalSlideIn {
-    from {
-        opacity: 0;
-        transform: translateY(-50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.modal-header {
-    padding: 25px 30px;
-    border-bottom: 1px solid #eee;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.modal-close {
-    background: none;
-    border: none;
-    font-size: 28px;
-    cursor: pointer;
-    color: #999;
-    transition: color 0.3s;
-    padding: 0;
-    width: 30px;
-    height: 30px;
-    display: flex;
-    align-items: right;
-    justify-content: right;
-}   
-
-.modal-close:hover {
-    color: #333;
-}
-
-.modal-body {
-    padding: 30px;
-}
-
-.modal-image {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 20px;
-}
-
-.modal-text {
-    color: var(--gray);
-    line-height: 1.6;
-    font-size: 16px;
 }
 
 /* ====== RESPONSIVE ====== */

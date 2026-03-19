@@ -767,6 +767,16 @@ footer {
 
 /* ====== RESPONSIVE ====== */
 @media (max-width: 768px) {
+    .services-carousels {
+        grid-template-columns: 1fr;
+        border-radius: 12px;
+    }
+
+    .carousel-pane + .carousel-pane {
+        border-left: none;
+        border-top: 2px solid var(--light);
+    }
+
     .desktop-menu {
         display: none;
     }
@@ -782,6 +792,14 @@ footer {
     .hero h1,
     .page-header h1 {
         font-size: 32px;
+    }
+
+    .hero h2 {
+        font-size: 20px;
+    }
+
+    .hero h3 {
+        font-size: 24px;
     }
 
     .hero p,

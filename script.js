@@ -94,7 +94,7 @@ function initCarousel() {
 
     wrapper.addEventListener('touchend', e => {
         const diff = touchStartX - e.changedTouches[0].clientX;
-        if (Math.abs(diff) > 50) {
+        if (Math.abs(diff) > 150) {
             goTo(diff > 0 ? (current + 1) % total : (current - 1 + total) % total);
         }
     }, { passive: true });
